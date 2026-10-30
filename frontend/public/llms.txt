@@ -1,0 +1,12 @@
+# Smart SOS Roadside Voice Assistant and Digital Twin
+
+> A Digital Twin-enabled IoT emergency response system and real-time command dashboard featuring automated crash impact detection, speech recognition keywords, and intelligent responder dispatch.
+
+## Core Pages and Resources
+- [Emergency Command Dashboard](https://roadside-voice-assistant.vercel.app/): Real-time live map, active roadside SOS alerts feed, and emergency responder status.
+- [Roadside Voice SOS Interface](https://roadside-voice-assistant.vercel.app/sos): Voice recognition emergency trigger, impact simulation, and status tracker.
+- [Digital Twin Hub](https://roadside-voice-assistant.vercel.app/digital-twin): Roadside unit telemetry, virtual battery, connectivity, and remote IoT diagnostics.
+- [Analytics & Incident Metrics](https://roadside-voice-assistant.vercel.app/analytics): Response times, 7-day incident distribution, and fleet uptime.
+
+## Technical Documentation
+- [GitHub Repository](https://github.com/Janhavidonadkar2916/Roadside_voice_assiatant): Open-source repository with backend, digital twin simulator, and dashboard code.

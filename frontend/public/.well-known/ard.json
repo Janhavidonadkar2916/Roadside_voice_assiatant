@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agenticresource.org/schema/v1/ard.json",
+  "name": "Smart SOS Roadside Voice Assistant",
+  "description": "Digital Twin-enabled roadside emergency response command center.",
+  "version": "1.0.0",
+  "url": "https://roadside-voice-assistant.vercel.app",
+  "resources": [
+    {
+      "name": "Dashboard",
+      "type": "dashboard",
+      "url": "https://roadside-voice-assistant.vercel.app/"
+    },
+    {
+      "name": "Roadside Voice SOS",
+      "type": "voice-interface",
+      "url": "https://roadside-voice-assistant.vercel.app/sos"
+    },
+    {
+      "name": "Digital Twin Hub",
+      "type": "iot-twin",
+      "url": "https://roadside-voice-assistant.vercel.app/digital-twin"
+    },
+    {
+      "name": "Analytics",
+      "type": "metrics",
+      "url": "https://roadside-voice-assistant.vercel.app/analytics"
+    }
+  ]
+}

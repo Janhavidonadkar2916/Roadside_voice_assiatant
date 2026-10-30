@@ -19,24 +19,28 @@ export default function AlertFeed({ alerts = [] }) {
     <div className="bg-dark-800 border border-dark-700/80 rounded-xl p-4 flex flex-col h-full shadow-xl">
       <div className="flex items-center justify-between pb-3 border-b border-dark-700">
         <div className="flex items-center gap-2">
-          <ShieldAlert className="w-5 h-5 text-red-500" />
-          <h3 className="font-bold text-sm text-white uppercase tracking-wider font-mono">LIVE EMERGENCY FEED</h3>
+          <ShieldAlert className="w-5 h-5 text-red-500" aria-hidden="true" />
+          <h2 className="font-bold text-sm text-white uppercase tracking-wider font-mono">LIVE EMERGENCY FEED</h2>
         </div>
-        <span className="px-2 py-0.5 text-xs font-mono bg-red-500/20 text-red-400 rounded-full">
+        <span className="px-2 py-0.5 text-xs font-mono bg-red-500/20 text-red-300 rounded-full font-semibold">
           {alerts.filter(a => a.status !== 'RESOLVED').length} Active
         </span>
       </div>
 
       <div className="flex-1 overflow-y-auto mt-3 space-y-2.5 pr-1 max-h-[500px]">
         {alerts.length === 0 ? (
-          <div className="text-center py-12 text-slate-500 text-xs font-mono">
+          <div className="text-center py-12 text-slate-300 text-xs font-mono">
             No emergency alerts active. System operational.
           </div>
         ) : (
           alerts.map((alert) => (
             <div
               key={alert.id}
-              onClick={() => navigate(`/alerts/${alert.alert_id}`)}
+              role="button"
+              tabIndex={0}
+              aria-label={`View details for alert ${alert.alert_id || alert.id}`}
+              onKeyDown={(e) => { if (e.key === 'Enter') navigate(`/alerts/${alert.alert_id || alert.id}`); }}
+              onClick={() => navigate(`/alerts/${alert.alert_id || alert.id}`)}
               className="bg-dark-900/80 hover:bg-dark-900 border border-dark-700 hover:border-red-500/50 p-3 rounded-lg cursor-pointer transition flex items-start justify-between group"
             >
               <div className="space-y-1.5 flex-1 pr-2">
@@ -47,27 +51,22 @@ export default function AlertFeed({ alerts = [] }) {
                 </div>
 
                 <div className="font-bold text-sm text-white group-hover:text-red-400 transition">
-                  {alert.type.replace('_', ' ')}
+                  {(alert.type || 'EMERGENCY').replace('_', ' ')}
                 </div>
 
-                <div className="flex items-center gap-3 text-xs text-slate-400 font-mono flex-wrap">
+                <div className="flex items-center gap-3 text-xs text-slate-300 font-mono flex-wrap">
                   <span className="flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-slate-500" />
+                    <MapPin className="w-3 h-3 text-slate-400" aria-hidden="true" />
                     {alert.highway} / KM {alert.kilometer_marker}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-slate-500" />
+                    <Clock className="w-3 h-3 text-slate-400" aria-hidden="true" />
                     {formatTimeAgo(alert.created_at)}
-                  </span>
-                  <span className="text-amber-400 font-semibold">
-                    Score: {alert.priority_score}
                   </span>
                 </div>
               </div>
 
-              <div className="text-slate-600 group-hover:text-red-400 transition self-center">
-                <ChevronRight className="w-5 h-5" />
-              </div>
+              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition self-center" aria-hidden="true" />
             </div>
           ))
         )}

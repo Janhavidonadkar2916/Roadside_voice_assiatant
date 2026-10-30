@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roadside-voice-assistant.vercel.app/sitemap.xml

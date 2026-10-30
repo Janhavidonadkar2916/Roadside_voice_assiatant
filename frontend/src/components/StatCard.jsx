@@ -12,13 +12,13 @@ export default function StatCard({ title, value, subtext, icon: Icon, color = 'b
   return (
     <div className="bg-dark-800 border border-dark-700/80 rounded-xl p-4 flex items-center justify-between shadow-lg hover:border-dark-600 transition">
       <div>
-        <p className="text-xs font-medium text-slate-400 uppercase tracking-wider font-mono">{title}</p>
-        <h3 className="text-2xl font-bold text-white mt-1 font-mono tracking-tight">{value}</h3>
-        {subtext && <p className="text-xs text-slate-500 mt-0.5">{subtext}</p>}
+        <h2 className="text-xs font-semibold text-slate-300 uppercase tracking-wider font-mono">{title}</h2>
+        <p className="text-2xl font-bold text-white mt-1 font-mono tracking-tight">{value}</p>
+        {subtext && <p className="text-xs text-slate-300 mt-1 font-medium">{subtext}</p>}
       </div>
 
       {Icon && (
-        <div className={`p-3 rounded-lg border ${colorMap[color] || colorMap.blue}`}>
+        <div className={`p-3 rounded-lg border ${colorMap[color] || colorMap.blue}`} aria-hidden="true">
           <Icon className="w-6 h-6" />
         </div>
       )}
